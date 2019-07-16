@@ -16,7 +16,12 @@ export type Props = {
   filter: VisibilityFilter;
 };
 
-export const LinkContainer = connect(
+export const LinkContainer = connect<
+  ReturnType<typeof mapStateToProps>,
+  ReturnType<typeof mapDispatchToProps>,
+  Props,
+  State
+>(
   mapStateToProps,
   mapDispatchToProps
 )(Link);

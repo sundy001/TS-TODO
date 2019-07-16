@@ -23,5 +23,6 @@ export const AddTodo: React.SFC<Props> = ({ addTodo }) => {
   );
 };
 
-// export type Props = ReturnType<typeof mapDispatchToProps>;
-export type Props = any;
+export type Props = {
+  addTodo: (value: string) => void;
+};

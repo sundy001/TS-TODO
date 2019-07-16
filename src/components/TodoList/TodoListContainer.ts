@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { TodoList } from "./TodoList";
+import { TodoList, Props } from "./TodoList";
 import { State, TodoItem, Action, toggleTodo } from "../../store";
 import { VisibilityFilter, VISIBILIT_FILTER } from "../../constants";
 import { Dispatch } from "react";
@@ -7,7 +7,7 @@ import { Dispatch } from "react";
 const getVisibleTodos = (
   todos: readonly TodoItem[],
   filter: VisibilityFilter
-) => {
+): readonly TodoItem[] => {
   switch (filter) {
     case VISIBILIT_FILTER.SHOW_ALL:
       return todos;
@@ -20,15 +20,20 @@ const getVisibleTodos = (
   }
 };
 
-const mapStateToProps = (state: State) => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+const mapStateToProps = ({ todos, visibilityFilter }: State) => ({
+  todos: getVisibleTodos(todos, visibilityFilter)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   toggleTodo: (id: number) => dispatch(toggleTodo(id))
 });
 
-export const TodoListContainer = connect(
+export const TodoListContainer = connect<
+  ReturnType<typeof mapStateToProps>,
+  ReturnType<typeof mapDispatchToProps>,
+  {},
+  State
+>(
   mapStateToProps,
   mapDispatchToProps
 )(TodoList);
