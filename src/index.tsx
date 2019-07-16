@@ -1,16 +1,15 @@
-import * as React from "react";
+import React from "react";
 import { render } from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import { App } from "./components";
+import { reducer } from "./store";
 
-import "./styles.css";
+const store = createStore(reducer);
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
-}
-
-const rootElement = document.getElementById("root");
-render(<App />, rootElement);
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementsByTagName("body")[0]
+);

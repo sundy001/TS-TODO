@@ -1,0 +1,10 @@
+.idea
+.tmp
+.vscode
+.DS_Store
+
+dist/main.js
+node_modules
+
+*.iml
+*.log
