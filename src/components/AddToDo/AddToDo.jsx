@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 
-export const AddTodo: React.SFC<Props> = ({ addTodo }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+export const AddTodo = ({ addTodo }) => {
+  const inputRef = useRef(null);
 
   return (
     <div>
       <form
         onSubmit={e => {
           e.preventDefault();
-          const input = inputRef.current!;
+          const input = inputRef.current;
           if (!input.value.trim()) {
             return;
           }
@@ -21,8 +21,4 @@ export const AddTodo: React.SFC<Props> = ({ addTodo }) => {
       </form>
     </div>
   );
-};
-
-export type Props = {
-  addTodo: (value: string) => void;
 };
