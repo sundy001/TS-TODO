@@ -1,4 +1,8 @@
-export const todos = (state = [], action) => {
+import { State } from "../type";
+import { Action } from "../actions";
+import { Reducer } from "../../types";
+
+export const todos: Reducer<State["todos"], Action> = (state = [], action) => {
   switch (action.type) {
     case "ADD_TODO":
       return [
