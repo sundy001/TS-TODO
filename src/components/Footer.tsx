@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "./Link";
 import { VISIBILIT_FILTER } from "../constants";
 
-export const Footer = () => (
+export const Footer: FC<{}> = () => (
   <div>
     <span>Show: </span>
     <Link filter={VISIBILIT_FILTER.SHOW_ALL}>All</Link>
